@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **2 — Layout base, interfaz moderna y notificaciones** |
-| Versión actual | `0.2.0` (pendiente de aplicar) |
-| Última fase validada | Fase 1 — `v0.1.0` (2026-11-10) |
-| Progreso global | 7 / 35 tareas · 1 / 6 fases |
+| Fase activa | **3 — Núcleo de tareas, estados reversibles y papelera** |
+| Versión actual | `0.3.0` (pendiente de aplicar) |
+| Última fase validada | Fase 2 — `v0.2.0` (2026-11-10) |
+| Progreso global | 13 / 35 tareas · 2 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -50,7 +50,7 @@
 | # | Fase | Rama | Versión | Tareas | Requisitos | Estado |
 | - | ---- | ---- | ------- | ------ | ---------- | ------ |
 | 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 7/7 | RNF-02, RF-01 (base) | ✅ Completada |
-| 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 0/6 | RF-01, RF-02, RF-11, RNF-03 | ⬜ Pendiente |
+| 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 6/6 | RF-01, RF-02, RF-11, RNF-03 | ✅ Completada |
 | 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 0/6 | RF-03, RF-04, RF-05 | ⬜ Pendiente |
 | 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 0/5 | RF-07, RF-08 | ⬜ Pendiente |
 | 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 0/5 | RF-06, RNF-01 | ⬜ Pendiente |
@@ -94,15 +94,15 @@ git checkout develop && git merge --no-ff feat/fase-1-arquitectura
 
 - **Rama:** `feat/fase-2-layout-ui` · **Versión:** `0.2.0`
 - **Objetivo:** construir el esqueleto visual y la navegación en español, más la integración de notificaciones.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
+- **Estado:** ✅ Completada · **Tareas:** 6/6
 
 **Tareas**
-- [ ] Layout responsive: barra lateral de listas, cabecera, área de contenido, pie de estado.
-- [ ] Sistema de diseño en Tailwind: tipografía, espaciados, colores, modo claro/oscuro automático (RF-02).
-- [ ] Menús desplegables accesibles (teclado + foco visible) y modales base (RNF-03).
-- [ ] Navegación con React Router y estados activos por ruta (RF-01).
-- [ ] Servicio de notificaciones: permiso, programación por fecha de vencimiento y fallback si el navegador no lo soporta (RF-11).
-- [ ] Página `/configuracion` con preferencias de tema y notificaciones.
+- [x] Layout responsive: barra lateral de listas, cabecera, área de contenido, pie de estado.
+- [x] Sistema de diseño en Tailwind: tipografía, espaciados, colores, modo claro/oscuro automático (RF-02).
+- [x] Menús desplegables accesibles (teclado + foco visible) y modales base (RNF-03).
+- [x] Navegación con React Router y estados activos por ruta (RF-01).
+- [x] Servicio de notificaciones: permiso, programación por fecha de vencimiento y fallback si el navegador no lo soporta (RF-11).
+- [x] Página `/configuracion` con preferencias de tema y notificaciones.
 
 **Entregables:** shell de la app, componentes UI reutilizables (`Button`, `Dropdown`, `Modal`, `Toast`), servicio de notificaciones.
 **Criterios de aceptación:** navegación completa sin recargas; modo oscuro conmuta y persiste; notificación de prueba se dispara con permiso concedido; contraste y foco conformes a WCAG básico.
@@ -249,5 +249,6 @@ git push origin main --tags
 | Fase | Versión | Tag | Fecha | Commit de merge | Validación del usuario |
 | ---- | ------- | --- | ----- | --------------- | ---------------------- |
 | 1 | `0.1.0` | `v0.1.0` | 2026-11-10 | `b29584f` | Modo auto (autorizado por el usuario) |
+| 2 | `0.2.0` | `v0.2.0` | 2026-11-10 | `37495ca` | Modo auto (autorizado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
