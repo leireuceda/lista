@@ -11,7 +11,7 @@
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
 | Fase activa | **Completada — release `v0.6.0` en `main`** |
-| Versión actual | `0.6.0` (release final) |
+| Versión actual | `0.6.1` (parche de despliegue) |
 | Última fase validada | Fase 6 — `v0.6.0` (2026-11-10) |
 | Progreso global | 35 / 35 tareas · 6 / 6 fases |
 
@@ -256,5 +256,6 @@ git push origin main --tags
 | 5 | `0.5.0` | `v0.5.0` | 2026-11-10 | `da96d71` | Modo auto (autorizado por el usuario) |
 | 6 | `0.6.0` | `v0.6.0` | 2026-11-10 | `4ced6bd` | Aprobado por el usuario («OK») |
 | — | `0.6.0` | `v0.6.0` | 2026-11-10 | — | Release final autorizado («OK») |
+| — (parche) | `0.6.1` | `v0.6.1` | 2026-11-10 | `7527831` | Fix 404 de rutas profundas en Vercel (solicitado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 se aprobó explícitamente y se publicó en `main` como release `v0.6.0`.
