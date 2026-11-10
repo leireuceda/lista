@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "usuario": {
+    "id": "u-1",
+    "nombre": "Leyri",
+    "email": "leireuceda280604@gmail.com"
+  },
+  "preferencias": {
+    "tema": "sistema",
+    "notificaciones": false
+  },
+  "listas": [
+    {
+      "id": "l-personal",
+      "nombre": "Personal",
+      "descripcion": "Tareas del día a día",
+      "propietarioId": "u-1",
+      "creadaEn": "2026-11-01T09:00:00.000Z",
+      "actualizadaEn": "2026-11-10T08:00:00.000Z"
+    },
+    {
+      "id": "l-trabajo",
+      "nombre": "Trabajo",
+      "descripcion": "Proyectos y reuniones",
+      "propietarioId": "u-1",
+      "creadaEn": "2026-11-01T09:05:00.000Z",
+      "actualizadaEn": "2026-11-10T08:00:00.000Z"
+    }
+  ],
+  "categorias": [
+    { "id": "c-personal", "nombre": "Personal", "color": "#22c55e" },
+    { "id": "c-trabajo", "nombre": "Trabajo", "color": "#3b82f6" },
+    { "id": "c-estudio", "nombre": "Estudio", "color": "#a855f7" }
+  ],
+  "etiquetas": [
+    { "id": "e-urgente", "nombre": "urgente", "color": "#ef4444" },
+    { "id": "e-casa", "nombre": "casa", "color": "#22c55e" },
+    { "id": "e-reunion", "nombre": "reunión", "color": "#3b82f6" },
+    { "id": "e-idea", "nombre": "idea", "color": "#a855f7" }
+  ],
+  "tareas": [
+    {
+      "id": "t-1",
+      "listaId": "l-personal",
+      "titulo": "Comprar víveres para la semana",
+      "descripcion": "Fruta, verdura, pan y leche",
+      "vencimiento": "2026-11-11T18:00:00.000Z",
+      "categoriaId": "c-personal",
+      "etiquetaIds": ["e-casa"],
+      "prioridad": "media",
+      "estado": "pendiente",
+      "historial": [{ "estado": "pendiente", "fecha": "2026-11-09T10:00:00.000Z" }],
+      "orden": 1,
+      "creadaEn": "2026-11-09T10:00:00.000Z",
+      "actualizadaEn": "2026-11-09T10:00:00.000Z",
+      "eliminadaEn": null
+    },
+    {
+      "id": "t-2",
+      "listaId": "l-personal",
+      "titulo": "Reservar cita en el dentista",
+      "descripcion": "Llamar por la mañana",
+      "vencimiento": "2026-11-13T09:30:00.000Z",
+      "categoriaId": "c-personal",
+      "etiquetaIds": ["e-urgente"],
+      "prioridad": "alta",
+      "estado": "en-progreso",
+      "historial": [
+        { "estado": "pendiente", "fecha": "2026-11-08T09:00:00.000Z" },
+        { "estado": "en-progreso", "fecha": "2026-11-10T08:15:00.000Z" }
+      ],
+      "orden": 2,
+      "creadaEn": "2026-11-08T09:00:00.000Z",
+      "actualizadaEn": "2026-11-10T08:15:00.000Z",
+      "eliminadaEn": null
+    },
+    {
+      "id": "t-3",
+      "listaId": "l-personal",
+      "titulo": "Regar las plantas",
+      "descripcion": "",
+      "vencimiento": null,
+      "categoriaId": "c-personal",
+      "etiquetaIds": ["e-casa"],
+      "prioridad": "baja",
+      "estado": "completada",
+      "historial": [
+        { "estado": "pendiente", "fecha": "2026-11-07T07:00:00.000Z" },
+        { "estado": "completada", "fecha": "2026-11-08T07:30:00.000Z" }
+      ],
+      "orden": 3,
+      "creadaEn": "2026-11-07T07:00:00.000Z",
+      "actualizadaEn": "2026-11-08T07:30:00.000Z",
+      "eliminadaEn": null
+    },
+    {
+      "id": "t-4",
+      "listaId": "l-trabajo",
+      "titulo": "Preparar presentación del sprint",
+      "descripcion": "Diapositivas de resultados y próximos pasos",
+      "vencimiento": "2026-11-12T15:00:00.000Z",
+      "categoriaId": "c-trabajo",
+      "etiquetaIds": ["e-reunion", "e-urgente"],
+      "prioridad": "urgente",
+      "estado": "en-progreso",
+      "historial": [
+        { "estado": "pendiente", "fecha": "2026-11-06T11:00:00.000Z" },
+        { "estado": "en-progreso", "fecha": "2026-11-09T09:00:00.000Z" }
+      ],
+      "orden": 1,
+      "creadaEn": "2026-11-06T11:00:00.000Z",
+      "actualizadaEn": "2026-11-09T09:00:00.000Z",
+      "eliminadaEn": null
+    },
+    {
+      "id": "t-5",
+      "listaId": "l-trabajo",
+      "titulo": "Revisar correos pendientes",
+      "descripcion": "Bandeja de entrada y seguimientos",
+      "vencimiento": null,
+      "categoriaId": "c-trabajo",
+      "etiquetaIds": [],
+      "prioridad": "media",
+      "estado": "pendiente",
+      "historial": [{ "estado": "pendiente", "fecha": "2026-11-10T07:45:00.000Z" }],
+      "orden": 2,
+      "creadaEn": "2026-11-10T07:45:00.000Z",
+      "actualizadaEn": "2026-11-10T07:45:00.000Z",
+      "eliminadaEn": null
+    },
+    {
+      "id": "t-6",
+      "listaId": "l-trabajo",
+      "titulo": "Apuntar ideas para la retro",
+      "descripcion": "",
+      "vencimiento": null,
+      "categoriaId": "c-estudio",
+      "etiquetaIds": ["e-idea"],
+      "prioridad": "baja",
+      "estado": "pendiente",
+      "historial": [{ "estado": "pendiente", "fecha": "2026-11-09T16:20:00.000Z" }],
+      "orden": 3,
+      "creadaEn": "2026-11-09T16:20:00.000Z",
+      "actualizadaEn": "2026-11-09T16:20:00.000Z",
+      "eliminadaEn": null
+    }
+  ],
+  "comparticiones": []
+}
