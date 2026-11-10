@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **3 — Núcleo de tareas, estados reversibles y papelera** |
-| Versión actual | `0.3.0` (pendiente de aplicar) |
-| Última fase validada | Fase 2 — `v0.2.0` (2026-11-10) |
-| Progreso global | 13 / 35 tareas · 2 / 6 fases |
+| Fase activa | **4 — Organización avanzada y buscador global** |
+| Versión actual | `0.4.0` (pendiente de aplicar) |
+| Última fase validada | Fase 3 — `v0.3.0` (2026-11-10) |
+| Progreso global | 19 / 35 tareas · 3 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -51,7 +51,7 @@
 | - | ---- | ---- | ------- | ------ | ---------- | ------ |
 | 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 7/7 | RNF-02, RF-01 (base) | ✅ Completada |
 | 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 6/6 | RF-01, RF-02, RF-11, RNF-03 | ✅ Completada |
-| 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 0/6 | RF-03, RF-04, RF-05 | ⬜ Pendiente |
+| 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 6/6 | RF-03, RF-04, RF-05 | ✅ Completada |
 | 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 0/5 | RF-07, RF-08 | ⬜ Pendiente |
 | 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 0/5 | RF-06, RNF-01 | ⬜ Pendiente |
 | 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 0/6 | RF-09, RF-10 | ⬜ Pendiente |
@@ -121,15 +121,15 @@ git checkout develop && git merge --no-ff feat/fase-2-layout-ui
 
 - **Rama:** `feat/fase-3-core-tareas` · **Versión:** `0.3.0`
 - **Objetivo:** ciclo de vida completo de la tarea sin pérdida de datos.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
+- **Estado:** ✅ Completada · **Tareas:** 6/6
 
 **Tareas**
-- [ ] Store de tareas (Zustand/Context) con operaciones CRUD y persistencia automática.
-- [ ] Formulario de tarea: título, descripción, vencimiento, categoría, etiquetas, prioridad (Baja/Media/Alta/Urgente) (RF-03).
-- [ ] Máquina de estados `Pendiente → En progreso → Completada` con reversión a cualquier estado anterior y registro de historial (RF-04).
-- [ ] Papelera: borrado lógico, restauración y vaciado definitivo con confirmación (RF-05).
-- [ ] Vista `/papelera` con acciones masivas y aviso de purga.
-- [ ] Tests unitarios del reducer/máquina de estados.
+- [x] Store de tareas (Zustand/Context) con operaciones CRUD y persistencia automática.
+- [x] Formulario de tarea: título, descripción, vencimiento, categoría, etiquetas, prioridad (Baja/Media/Alta/Urgente) (RF-03).
+- [x] Máquina de estados `Pendiente → En progreso → Completada` con reversión a cualquier estado anterior y registro de historial (RF-04).
+- [x] Papelera: borrado lógico, restauración y vaciado definitivo con confirmación (RF-05).
+- [x] Vista `/papelera` con acciones masivas y aviso de purga.
+- [x] Tests unitarios del reducer/máquina de estados.
 
 **Entregables:** CRUD funcional, estados reversibles, flujo papelera completo.
 **Criterios de aceptación:** crear → completar → revertir → enviar a papelera → restaurar funciona sin recargar; nada se borra sin pasar por papelera; tests en verde.
@@ -250,5 +250,6 @@ git push origin main --tags
 | ---- | ------- | --- | ----- | --------------- | ---------------------- |
 | 1 | `0.1.0` | `v0.1.0` | 2026-11-10 | `b29584f` | Modo auto (autorizado por el usuario) |
 | 2 | `0.2.0` | `v0.2.0` | 2026-11-10 | `37495ca` | Modo auto (autorizado por el usuario) |
+| 3 | `0.3.0` | `v0.3.0` | 2026-11-10 | `d406621` | Modo auto (autorizado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
