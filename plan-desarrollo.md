@@ -10,8 +10,8 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **Release final a `main` (bloqueado hasta "OK")** |
-| Versión actual | `0.6.0` (release candidata) |
+| Fase activa | **Completada — release `v0.6.0` en `main`** |
+| Versión actual | `0.6.0` (release final) |
 | Última fase validada | Fase 6 — `v0.6.0` (2026-11-10) |
 | Progreso global | 35 / 35 tareas · 6 / 6 fases |
 
@@ -230,15 +230,16 @@ git checkout develop
 # pruebas finales: build, lint, tests, recorrido manual del DoD
 git checkout main
 git merge --no-ff develop
-git tag -a v0.6.0 -m "TaskFlow Pro - release final"
+# v0.6.0 ya se etiquetó al cerrar la Fase 6 (release candidata) y queda
+# incluida en main. No se reetiqueta para no reescribir historia publicada.
 git push origin main --tags
 ```
 
 **DoD global (PRD §5):**
-- [ ] Compila y corre con React 19 y es accesible en línea.
-- [ ] Todas las rutas en español responden.
-- [ ] Flujo crear → completar → papelera → restaurar sin errores.
-- [ ] Enlaces compartidos permiten ver y editar listas colaborativamente.
+- [x] Compila y corre con React 19 y es accesible en línea.
+- [x] Todas las rutas en español responden.
+- [x] Flujo crear → completar → papelera → restaurar sin errores.
+- [x] Enlaces compartidos permiten ver y editar listas colaborativamente.
 
 > Prohibido crear `v1.0.0` o cualquier versión superior en este ciclo.
 
@@ -253,6 +254,7 @@ git push origin main --tags
 | 3 | `0.3.0` | `v0.3.0` | 2026-11-10 | `d406621` | Modo auto (autorizado por el usuario) |
 | 4 | `0.4.0` | `v0.4.0` | 2026-11-10 | `5e4f473` | Modo auto (autorizado por el usuario) |
 | 5 | `0.5.0` | `v0.5.0` | 2026-11-10 | `da96d71` | Modo auto (autorizado por el usuario) |
-| 6 | `0.6.0` | `v0.6.0` | 2026-11-10 | `4ced6bd` | Modo auto (release candidata, pendiente de "OK" para `main`) |
+| 6 | `0.6.0` | `v0.6.0` | 2026-11-10 | `4ced6bd` | Aprobado por el usuario («OK») |
+| — | `0.6.0` | `v0.6.0` | 2026-11-10 | — | Release final autorizado («OK») |
 
-Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
+Se añade una fila al validar cada fase en `develop`. La Fase 6 se aprobó explícitamente y se publicó en `main` como release `v0.6.0`.
