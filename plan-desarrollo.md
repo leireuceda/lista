@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **5 — Interactividad visual (Drag and Drop)** |
-| Versión actual | `0.5.0` (pendiente de aplicar) |
-| Última fase validada | Fase 4 — `v0.4.0` (2026-11-10) |
-| Progreso global | 24 / 35 tareas · 4 / 6 fases |
+| Fase activa | **6 — Colaboración en línea y compartición de listas** |
+| Versión actual | `0.6.0` (pendiente de aplicar) |
+| Última fase validada | Fase 5 — `v0.5.0` (2026-11-10) |
+| Progreso global | 29 / 35 tareas · 5 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -53,7 +53,7 @@
 | 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 6/6 | RF-01, RF-02, RF-11, RNF-03 | ✅ Completada |
 | 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 6/6 | RF-03, RF-04, RF-05 | ✅ Completada |
 | 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 5/5 | RF-07, RF-08 | ✅ Completada |
-| 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 0/5 | RF-06, RNF-01 | ⬜ Pendiente |
+| 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 5/5 | RF-06, RNF-01 | ✅ Completada |
 | 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 0/6 | RF-09, RF-10 | ⬜ Pendiente |
 | — | Release final a `main` | `develop` → `main` | `v0.6.0` | — | DoD completo | 🔒 Bloqueado |
 
@@ -174,14 +174,14 @@ git checkout develop && git merge --no-ff feat/fase-4-organizacion-busqueda
 
 - **Rama:** `feat/fase-5-drag-and-drop` · **Versión:** `0.5.0`
 - **Objetivo:** reordenar tareas de forma manual e intuitiva, sin flechas.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/5
+- **Estado:** ✅ Completada · **Tareas:** 5/5
 
 **Tareas**
-- [ ] Integrar `@dnd-kit/core` + `@dnd-kit/sortable` con sensores de puntero y teclado.
-- [ ] Reordenación dentro de una lista y entre listas, persistiendo el orden en el JSON (RF-06).
-- [ ] Feedback visual (placeholder, elevación, animaciones) sin saltos de layout.
-- [ ] Accesibilidad: reordenación por teclado y anuncios ARIA.
-- [ ] Guardas ante solapamientos y reordenaciones inválidas.
+- [x] Integrar `@dnd-kit/core` + `@dnd-kit/sortable` con sensores de puntero y teclado.
+- [x] Reordenación dentro de una lista y entre listas, persistiendo el orden en el JSON (RF-06).
+- [x] Feedback visual (placeholder, elevación, animaciones) sin saltos de layout.
+- [x] Accesibilidad: reordenación por teclado y anuncios ARIA.
+- [x] Guardas ante solapamientos y reordenaciones inválidas.
 
 **Entregables:** drag and drop persistente y accesible.
 **Criterios de aceptación:** el orden sobrevive a recargar y a exportar/importar; funciona con teclado; sin errores de consola ni saltos visuales.
@@ -252,5 +252,6 @@ git push origin main --tags
 | 2 | `0.2.0` | `v0.2.0` | 2026-11-10 | `37495ca` | Modo auto (autorizado por el usuario) |
 | 3 | `0.3.0` | `v0.3.0` | 2026-11-10 | `d406621` | Modo auto (autorizado por el usuario) |
 | 4 | `0.4.0` | `v0.4.0` | 2026-11-10 | `5e4f473` | Modo auto (autorizado por el usuario) |
+| 5 | `0.5.0` | `v0.5.0` | 2026-11-10 | `da96d71` | Modo auto (autorizado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
