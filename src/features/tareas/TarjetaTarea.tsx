@@ -6,6 +6,7 @@ import { useAppStore } from '../../stores/appStore'
 import { cambiarEstadoTarea, enviarAPapelera } from '../../stores/accionesTareas'
 import { ETIQUETA_ESTADO, ETIQUETA_PRIORIDAD, type Tarea } from '../../types/modelo'
 import { descripcionTransicion, estadosAnteriores, SIGUIENTE_ESTADO } from './maquinaEstados'
+import TextoResaltado from './TextoResaltado'
 
 const TONO_PRIORIDAD = {
   baja: 'neutro',
@@ -17,14 +18,18 @@ const TONO_PRIORIDAD = {
 interface Props {
   tarea: Tarea
   onEditar: (tarea: Tarea) => void
+  consulta?: string
+  mostrarLista?: boolean
 }
 
-export default function TarjetaTarea({ tarea, onEditar }: Props) {
+export default function TarjetaTarea({ tarea, onEditar, consulta = '', mostrarLista }: Props) {
   const categorias = useAppStore((estado) => estado.datos.categorias)
   const etiquetas = useAppStore((estado) => estado.datos.etiquetas)
+  const listas = useAppStore((estado) => estado.datos.listas)
   const { mostrar } = useToast()
 
   const categoria = categorias.find((item) => item.id === tarea.categoriaId)
+  const lista = listas.find((item) => item.id === tarea.listaId)
   const etiquetasTarea = etiquetas.filter((item) => tarea.etiquetaIds.includes(item.id))
   const completada = tarea.estado === 'completada'
   const vencida = !completada && estaVencida(tarea.vencimiento)
@@ -65,7 +70,7 @@ export default function TarjetaTarea({ tarea, onEditar }: Props) {
               completada ? 'text-slate-400 line-through' : 'text-slate-900 dark:text-slate-100'
             }`}
           >
-            {tarea.titulo}
+            <TextoResaltado texto={tarea.titulo} consulta={consulta} />
           </h3>
           <div className="flex items-center gap-1">
             <button
@@ -107,6 +112,9 @@ export default function TarjetaTarea({ tarea, onEditar }: Props) {
           <span className={`text-xs ${vencida ? 'font-medium text-red-600' : 'text-slate-400'}`}>
             {tarea.vencimiento ? `📅 ${formatearFecha(tarea.vencimiento)}` : 'Sin vencimiento'}
           </span>
+          {mostrarLista && lista && (
+            <span className="text-xs text-slate-400">▤ {lista.nombre}</span>
+          )}
           <Desplegable
             ariaLabel={`Cambiar estado de ${tarea.titulo}`}
             etiqueta={ETIQUETA_ESTADO[tarea.estado]}
