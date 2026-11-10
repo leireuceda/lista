@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **4 — Organización avanzada y buscador global** |
-| Versión actual | `0.4.0` (pendiente de aplicar) |
-| Última fase validada | Fase 3 — `v0.3.0` (2026-11-10) |
-| Progreso global | 19 / 35 tareas · 3 / 6 fases |
+| Fase activa | **5 — Interactividad visual (Drag and Drop)** |
+| Versión actual | `0.5.0` (pendiente de aplicar) |
+| Última fase validada | Fase 4 — `v0.4.0` (2026-11-10) |
+| Progreso global | 24 / 35 tareas · 4 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -52,7 +52,7 @@
 | 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 7/7 | RNF-02, RF-01 (base) | ✅ Completada |
 | 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 6/6 | RF-01, RF-02, RF-11, RNF-03 | ✅ Completada |
 | 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 6/6 | RF-03, RF-04, RF-05 | ✅ Completada |
-| 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 0/5 | RF-07, RF-08 | ⬜ Pendiente |
+| 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 5/5 | RF-07, RF-08 | ✅ Completada |
 | 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 0/5 | RF-06, RNF-01 | ⬜ Pendiente |
 | 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 0/6 | RF-09, RF-10 | ⬜ Pendiente |
 | — | Release final a `main` | `develop` → `main` | `v0.6.0` | — | DoD completo | 🔒 Bloqueado |
@@ -148,14 +148,14 @@ git checkout develop && git merge --no-ff feat/fase-3-core-tareas
 
 - **Rama:** `feat/fase-4-organizacion-busqueda` · **Versión:** `0.4.0`
 - **Objetivo:** clasificar y encontrar tareas al instante.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/5
+- **Estado:** ✅ Completada · **Tareas:** 5/5
 
 **Tareas**
-- [ ] Gestión de etiquetas con color y categorías personalizables (Personal, Trabajo, Estudio) (RF-07).
-- [ ] Filtros combinables por etiqueta, categoría, estado, prioridad y rango de fechas.
-- [ ] Buscador global con debounce sobre texto libre (título/descripción) y resaltado de coincidencias (RF-08).
-- [ ] Vista `/busqueda` con estado en la URL (query params compartibles).
-- [ ] Índices/estructuras derivadas para mantener el filtrado fluido con miles de tareas (RNF-01).
+- [x] Gestión de etiquetas con color y categorías personalizables (Personal, Trabajo, Estudio) (RF-07).
+- [x] Filtros combinables por etiqueta, categoría, estado, prioridad y rango de fechas.
+- [x] Buscador global con debounce sobre texto libre (título/descripción) y resaltado de coincidencias (RF-08).
+- [x] Vista `/busqueda` con estado en la URL (query params compartibles).
+- [x] Índices/estructuras derivadas para mantener el filtrado fluido con miles de tareas (RNF-01).
 
 **Entregables:** etiquetas, categorías, filtros y buscador en tiempo real.
 **Criterios de aceptación:** combinación de 3+ filtros devuelve resultados correctos en < 100 ms con 1.000 tareas; la URL refleja la búsqueda y es recargable.
@@ -251,5 +251,6 @@ git push origin main --tags
 | 1 | `0.1.0` | `v0.1.0` | 2026-11-10 | `b29584f` | Modo auto (autorizado por el usuario) |
 | 2 | `0.2.0` | `v0.2.0` | 2026-11-10 | `37495ca` | Modo auto (autorizado por el usuario) |
 | 3 | `0.3.0` | `v0.3.0` | 2026-11-10 | `d406621` | Modo auto (autorizado por el usuario) |
+| 4 | `0.4.0` | `v0.4.0` | 2026-11-10 | `5e4f473` | Modo auto (autorizado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
