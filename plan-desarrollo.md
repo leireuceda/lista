@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **6 — Colaboración en línea y compartición de listas** |
-| Versión actual | `0.6.0` (pendiente de aplicar) |
-| Última fase validada | Fase 5 — `v0.5.0` (2026-11-10) |
-| Progreso global | 29 / 35 tareas · 5 / 6 fases |
+| Fase activa | **Release final a `main` (bloqueado hasta "OK")** |
+| Versión actual | `0.6.0` (release candidata) |
+| Última fase validada | Fase 6 — `v0.6.0` (2026-11-10) |
+| Progreso global | 35 / 35 tareas · 6 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -54,7 +54,7 @@
 | 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 6/6 | RF-03, RF-04, RF-05 | ✅ Completada |
 | 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 5/5 | RF-07, RF-08 | ✅ Completada |
 | 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 5/5 | RF-06, RNF-01 | ✅ Completada |
-| 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 0/6 | RF-09, RF-10 | ⬜ Pendiente |
+| 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 6/6 | RF-09, RF-10 | ✅ Completada |
 | — | Release final a `main` | `develop` → `main` | `v0.6.0` | — | DoD completo | 🔒 Bloqueado |
 
 ---
@@ -200,15 +200,15 @@ git checkout develop && git merge --no-ff feat/fase-5-drag-and-drop
 
 - **Rama:** `feat/fase-6-colaboracion` · **Versión:** `0.6.0` (candidata final)
 - **Objetivo:** compartir listas con permisos de lectura/escritura simulando colaboración online.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
+- **Estado:** ✅ Completada · **Tareas:** 6/6
 
 **Tareas**
-- [ ] Modelo de compartición: enlace público/privado, token y permiso (`lectura` | `escritura`).
-- [ ] Ruta pública `/compartido/:id` con vista de solo lectura cuando corresponda (RF-10).
-- [ ] Modo escritura: añadir, editar, cambiar estado y reordenar desde el enlace compartido.
-- [ ] Sincronización entre pestañas/usuarios (BroadcastChannel + sondeo del backend JSON) y resolución de conflictos simple por `updatedAt` (RF-09).
-- [ ] Panel de gestión de enlaces: crear, revocar, copiar y ver últimos accesos.
-- [ ] Exportación/importación completa del entorno `.json` verificada de extremo a extremo (RNF-02).
+- [x] Modelo de compartición: enlace público/privado, token y permiso (`lectura` | `escritura`).
+- [x] Ruta pública `/compartido/:id` con vista de solo lectura cuando corresponda (RF-10).
+- [x] Modo escritura: añadir, editar, cambiar estado y reordenar desde el enlace compartido.
+- [x] Sincronización entre pestañas/usuarios (BroadcastChannel + sondeo del backend JSON) y resolución de conflictos simple por `updatedAt` (RF-09).
+- [x] Panel de gestión de enlaces: crear, revocar, copiar y ver últimos accesos.
+- [x] Exportación/importación completa del entorno `.json` verificada de extremo a extremo (RNF-02).
 
 **Entregables:** enlaces compartidos funcionales, colaboración simulada y gestión de permisos.
 **Criterios de aceptación:** dos pestañas con el mismo enlace ven cambios en < 2 s; el modo lectura no permite mutaciones (UI y datos); revocar un enlace lo invalida de inmediato.
@@ -253,5 +253,6 @@ git push origin main --tags
 | 3 | `0.3.0` | `v0.3.0` | 2026-11-10 | `d406621` | Modo auto (autorizado por el usuario) |
 | 4 | `0.4.0` | `v0.4.0` | 2026-11-10 | `5e4f473` | Modo auto (autorizado por el usuario) |
 | 5 | `0.5.0` | `v0.5.0` | 2026-11-10 | `da96d71` | Modo auto (autorizado por el usuario) |
+| 6 | `0.6.0` | `v0.6.0` | 2026-11-10 | `4ced6bd` | Modo auto (release candidata, pendiente de "OK" para `main`) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
