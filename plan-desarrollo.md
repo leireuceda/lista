@@ -1,0 +1,225 @@
+# Plan de Desarrollo — TaskFlow Pro
+
+> Documento vivo. Se actualiza al cerrar cada fase. Fuente de requisitos: `documento_prd_aplicaciondetareas.md`.
+> Reglas operativas: `.opencode/skills/planificador-tareas/SKILL.md`.
+
+## 1. Estado del proyecto
+
+| Campo | Valor |
+| ----- | ----- |
+| Repositorio | https://github.com/leireuceda/lista.git |
+| Rama de integración | `develop` |
+| Rama de producción | `main` (intacta hasta el release final) |
+| Fase activa | **1 — Arquitectura, modelado JSON y configuración base** |
+| Versión actual | `0.1.0` (pendiente de aplicar) |
+| Última fase validada | — |
+
+## 2. Reglas no negociables
+
+1. Una interacción = una fase. No se adelanta trabajo de fases posteriores.
+2. Cada fase nace de `develop` en su propia rama `feat/fase-N-*` y se fusiona **solo** a `develop` con `--no-ff`.
+3. `main` no recibe merges hasta que todas las fases estén validadas y el usuario dé el "OK" explícito.
+4. SemVer siempre `0.y.z`: nunca `1.0.0` ni superior. Una fase = una versión menor; los parches se reservan a correcciones.
+5. Al cerrar cada fase: resumen, tag `v0.y.0` y espera de confirmación del usuario.
+6. Toda la interfaz, rutas y textos visibles en español.
+
+## 3. Stack objetivo (según PRD)
+
+- React 19 + Vite + TypeScript.
+- React Router (rutas en español).
+- Tailwind CSS (modo claro/oscuro).
+- Estado global con Context API o Zustand.
+- Persistencia JSON: `localStorage` + backend ligero JSON (JSON Server / Express con archivos `.json`), exportación/importación `.json`.
+- Drag and Drop con `@dnd-kit/core`.
+- Web Notifications API.
+
+## 4. Mapa de fases
+
+| # | Fase | Rama | Versión | Requisitos | Estado |
+| - | ---- | ---- | ------- | ---------- | ------ |
+| 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | RNF-02, RF-01 (base) | ⬜ Pendiente |
+| 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | RF-01, RF-02, RF-11, RNF-03 | ⬜ Pendiente |
+| 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | RF-03, RF-04, RF-05 | ⬜ Pendiente |
+| 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | RF-07, RF-08 | ⬜ Pendiente |
+| 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | RF-06, RNF-01 | ⬜ Pendiente |
+| 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | RF-09, RF-10 | ⬜ Pendiente |
+| — | Release final a `main` | `develop` → `main` | `v0.6.0` | DoD completo | 🔒 Bloqueado |
+
+---
+
+## 5. Fases detalladas
+
+### Fase 1 — Arquitectura, modelado JSON y configuración base
+
+- **Rama:** `feat/fase-1-arquitectura` · **Versión:** `0.1.0`
+- **Objetivo:** definir el contrato de datos JSON y dejar el proyecto React 19 compilando con rutas en español.
+
+**Tareas**
+- [ ] Inicializar proyecto con Vite + React 19 + TypeScript.
+- [ ] Configurar Tailwind CSS y estructura de carpetas (`src/features`, `src/components`, `src/lib`, `src/types`).
+- [ ] Definir tipos e interfaces del modelo JSON: `Tarea`, `Lista`, `Etiqueta`, `Categoria`, `Estado`, `Usuario`, `PermisoComparticion`.
+- [ ] Crear `src/data/schema.json` + datos semilla (`seed.json`) coherentes con los tipos.
+- [ ] Implementar capa de persistencia (`localStorage` + adaptador JSON) y exportación/importación `.json` (RNF-02).
+- [ ] Configurar React Router con rutas en español: `/listas/:lista`, `/papelera`, `/busqueda`, `/configuracion`, `/compartido/:id`.
+- [ ] Añadir `package.json` en `0.1.0`, ESLint/Prettier y scripts (`dev`, `build`, `lint`).
+
+**Entregables:** esquema JSON documentado, seed de ejemplo, proyecto arrancando, rutas navegables (placeholders).
+**Criterios de aceptación:** `npm run build` sin errores; las 5 rutas responden; exportar e importar el seed restaura el estado idéntico; sin lógica de tareas todavía.
+
+```text
+git checkout develop
+git checkout -b feat/fase-1-arquitectura
+# ... desarrollo ...
+git add -A && git commit -m "feat(fase-1): arquitectura, modelo JSON y rutas base"
+git tag -a v0.1.0 -m "Fase 1: Arquitectura y modelo de datos"
+git checkout develop && git merge --no-ff feat/fase-1-arquitectura
+```
+
+---
+
+### Fase 2 — Layout base, interfaz moderna y notificaciones
+
+- **Rama:** `feat/fase-2-layout-ui` · **Versión:** `0.2.0`
+- **Objetivo:** construir el esqueleto visual y la navegación en español, más la integración de notificaciones.
+
+**Tareas**
+- [ ] Layout responsive: barra lateral de listas, cabecera, área de contenido, pie de estado.
+- [ ] Sistema de diseño en Tailwind: tipografía, espaciados, colores, modo claro/oscuro automático (RF-02).
+- [ ] Menús desplegables accesibles (teclado + foco visible) y modales base (RNF-03).
+- [ ] Navegación con React Router y estados activos por ruta (RF-01).
+- [ ] Servicio de notificaciones: permiso, programación por fecha de vencimiento y fallback si el navegador no lo soporta (RF-11).
+- [ ] Página `/configuracion` con preferencias de tema y notificaciones.
+
+**Entregables:** shell de la app, componentes UI reutilizables (`Button`, `Dropdown`, `Modal`, `Toast`), servicio de notificaciones.
+**Criterios de aceptación:** navegación completa sin recargas; modo oscuro conmuta y persiste; notificación de prueba se dispara con permiso concedido; contraste y foco conformes a WCAG básico.
+
+```text
+git checkout develop
+git checkout -b feat/fase-2-layout-ui
+git add -A && git commit -m "feat(fase-2): layout, sistema de diseno y notificaciones"
+git tag -a v0.2.0 -m "Fase 2: Layout e interfaz"
+git checkout develop && git merge --no-ff feat/fase-2-layout-ui
+```
+
+---
+
+### Fase 3 — Núcleo de tareas, estados reversibles y papelera
+
+- **Rama:** `feat/fase-3-core-tareas` · **Versión:** `0.3.0`
+- **Objetivo:** ciclo de vida completo de la tarea sin pérdida de datos.
+
+**Tareas**
+- [ ] Store de tareas (Zustand/Context) con operaciones CRUD y persistencia automática.
+- [ ] Formulario de tarea: título, descripción, vencimiento, categoría, etiquetas, prioridad (Baja/Media/Alta/Urgente) (RF-03).
+- [ ] Máquina de estados `Pendiente → En progreso → Completada` con reversión a cualquier estado anterior y registro de historial (RF-04).
+- [ ] Papelera: borrado lógico, restauración y vaciado definitivo con confirmación (RF-05).
+- [ ] Vista `/papelera` con acciones masivas y aviso de purga.
+- [ ] Tests unitarios del reducer/máquina de estados.
+
+**Entregables:** CRUD funcional, estados reversibles, flujo papelera completo.
+**Criterios de aceptación:** crear → completar → revertir → enviar a papelera → restaurar funciona sin recargar; nada se borra sin pasar por papelera; tests en verde.
+
+```text
+git checkout develop
+git checkout -b feat/fase-3-core-tareas
+git add -A && git commit -m "feat(fase-3): CRUD de tareas, estados reversibles y papelera"
+git tag -a v0.3.0 -m "Fase 3: Nucleo de tareas"
+git checkout develop && git merge --no-ff feat/fase-3-core-tareas
+```
+
+---
+
+### Fase 4 — Organización avanzada y buscador global
+
+- **Rama:** `feat/fase-4-organizacion-busqueda` · **Versión:** `0.4.0`
+- **Objetivo:** clasificar y encontrar tareas al instante.
+
+**Tareas**
+- [ ] Gestión de etiquetas con color y categorías personalizables (Personal, Trabajo, Estudio) (RF-07).
+- [ ] Filtros combinables por etiqueta, categoría, estado, prioridad y rango de fechas.
+- [ ] Buscador global con debounce sobre texto libre (título/descripción) y resaltado de coincidencias (RF-08).
+- [ ] Vista `/busqueda` con estado en la URL (query params compartibles).
+- [ ] Índices/estructuras derivadas para mantener el filtrado fluido con miles de tareas (RNF-01).
+
+**Entregables:** etiquetas, categorías, filtros y buscador en tiempo real.
+**Criterios de aceptación:** combinación de 3+ filtros devuelve resultados correctos en < 100 ms con 1.000 tareas; la URL refleja la búsqueda y es recargable.
+
+```text
+git checkout develop
+git checkout -b feat/fase-4-organizacion-busqueda
+git add -A && git commit -m "feat(fase-4): etiquetas, categorias y buscador global"
+git tag -a v0.4.0 -m "Fase 4: Organizacion y busqueda"
+git checkout develop && git merge --no-ff feat/fase-4-organizacion-busqueda
+```
+
+---
+
+### Fase 5 — Interactividad visual (Drag and Drop)
+
+- **Rama:** `feat/fase-5-drag-and-drop` · **Versión:** `0.5.0`
+- **Objetivo:** reordenar tareas de forma manual e intuitiva, sin flechas.
+
+**Tareas**
+- [ ] Integrar `@dnd-kit/core` + `@dnd-kit/sortable` con sensores de puntero y teclado.
+- [ ] Reordenación dentro de una lista y entre listas, persistiendo el orden en el JSON (RF-06).
+- [ ] Feedback visual (placeholder, elevación, animaciones) sin saltos de layout.
+- [ ] Accesibilidad: reordenación por teclado y anuncios ARIA.
+- [ ] Guardas ante solapamientos y reordenaciones inválidas.
+
+**Entregables:** drag and drop persistente y accesible.
+**Criterios de aceptación:** el orden sobrevive a recargar y a exportar/importar; funciona con teclado; sin errores de consola ni saltos visuales.
+
+```text
+git checkout develop
+git checkout -b feat/fase-5-drag-and-drop
+git add -A && git commit -m "feat(fase-5): reordenacion con drag and drop"
+git tag -a v0.5.0 -m "Fase 5: Drag and drop"
+git checkout develop && git merge --no-ff feat/fase-5-drag-and-drop
+```
+
+---
+
+### Fase 6 — Colaboración en línea y compartición de listas
+
+- **Rama:** `feat/fase-6-colaboracion` · **Versión:** `0.6.0` (candidata final)
+- **Objetivo:** compartir listas con permisos de lectura/escritura simulando colaboración online.
+
+**Tareas**
+- [ ] Modelo de compartición: enlace público/privado, token y permiso (`lectura` | `escritura`).
+- [ ] Ruta pública `/compartido/:id` con vista de solo lectura cuando corresponda (RF-10).
+- [ ] Modo escritura: añadir, editar, cambiar estado y reordenar desde el enlace compartido.
+- [ ] Sincronización entre pestañas/usuarios (BroadcastChannel + sondeo del backend JSON) y resolución de conflictos simple por `updatedAt` (RF-09).
+- [ ] Panel de gestión de enlaces: crear, revocar, copiar y ver últimos accesos.
+- [ ] Exportación/importación completa del entorno `.json` verificada de extremo a extremo (RNF-02).
+
+**Entregables:** enlaces compartidos funcionales, colaboración simulada y gestión de permisos.
+**Criterios de aceptación:** dos pestañas con el mismo enlace ven cambios en < 2 s; el modo lectura no permite mutaciones (UI y datos); revocar un enlace lo invalida de inmediato.
+
+```text
+git checkout develop
+git checkout -b feat/fase-6-colaboracion
+git add -A && git commit -m "feat(fase-6): comparticion de listas y colaboracion en linea"
+git tag -a v0.6.0 -m "Fase 6: Colaboracion (release candidata)"
+git checkout develop && git merge --no-ff feat/fase-6-colaboracion
+```
+
+---
+
+## 6. Release final (solo con "OK" explícito del usuario)
+
+```text
+git checkout develop
+# pruebas finales: build, lint, tests, recorrido manual del DoD
+git checkout main
+git merge --no-ff develop
+git tag -a v0.6.0 -m "TaskFlow Pro - release final"
+git push origin main --tags
+```
+
+**DoD global (PRD §5):**
+- [ ] Compila y corre con React 19 y es accesible en línea.
+- [ ] Todas las rutas en español responden.
+- [ ] Flujo crear → completar → papelera → restaurar sin errores.
+- [ ] Enlaces compartidos permiten ver y editar listas colaborativamente.
+
+> Prohibido crear `v1.0.0` o cualquier versión superior en este ciclo.
