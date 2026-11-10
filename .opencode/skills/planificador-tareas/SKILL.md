@@ -100,10 +100,18 @@ Comandos sugeridos:
 ### Cierre de fase (checklist)
 
 1. Resumen de lo entregado y archivos tocados.
-2. Verificación de que no se adelantó trabajo de otras fases.
-3. Confirmar versión `0.<n>.0` y tag `v0.<n>.0`.
-4. Merge **solo** a `develop` (con `--no-ff`).
-5. Esperar "OK" del usuario antes de abrir la siguiente fase.
+2. Marcar en `plan-desarrollo.md`: tareas `- [x]`, estado ✅, contador `Tareas: n/n`, "Progreso global" y fila en "Registro de cierre"; commit `docs(plan): cierra fase <n>`.
+3. Verificación de que no se adelantó trabajo de otras fases.
+4. Confirmar versión `0.<n>.0` y tag `v0.<n>.0`.
+5. Merge **solo** a `develop` (con `--no-ff`).
+6. Esperar "OK" del usuario antes de abrir la siguiente fase.
+
+### Seguimiento del plan
+
+- El plan vive en `plan-desarrollo.md` (raíz del proyecto) y es la única fuente de verdad del avance.
+- Al completar cada tarea durante el desarrollo: cambiar `- [ ]` por `- [x]` y actualizar el contador de la fase.
+- Al abrir una fase: estado 🟨 En curso y "Fase activa" actualizada.
+- Nunca marcar como completada una fase sin validación explícita del usuario.
 
 ### Release final (solo con autorización)
 

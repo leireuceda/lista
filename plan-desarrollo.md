@@ -13,6 +13,18 @@
 | Fase activa | **1 — Arquitectura, modelado JSON y configuración base** |
 | Versión actual | `0.1.0` (pendiente de aplicar) |
 | Última fase validada | — |
+| Progreso global | 0 / 35 tareas · 0 / 6 fases |
+
+### Leyenda de seguimiento
+
+| Marca | Significado |
+| ----- | ----------- |
+| ⬜ Pendiente | La fase/tarea no ha empezado |
+| 🟨 En curso | Fase activa o tarea en desarrollo |
+| ✅ Completada | Validada (fase) o terminada (tarea) |
+| 🔒 Bloqueado | No permitido todavía (p. ej. release a `main`) |
+
+**Regla de actualización:** cada vez que se termina una tarea se marca `- [x]` en este documento; al cerrar una fase se actualizan su estado (✅), el contador `Tareas: n/total`, el "Progreso global" y el "Registro de cierre", y se commitea con `docs(plan): ...`.
 
 ## 2. Reglas no negociables
 
@@ -35,15 +47,15 @@
 
 ## 4. Mapa de fases
 
-| # | Fase | Rama | Versión | Requisitos | Estado |
-| - | ---- | ---- | ------- | ---------- | ------ |
-| 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | RNF-02, RF-01 (base) | ⬜ Pendiente |
-| 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | RF-01, RF-02, RF-11, RNF-03 | ⬜ Pendiente |
-| 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | RF-03, RF-04, RF-05 | ⬜ Pendiente |
-| 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | RF-07, RF-08 | ⬜ Pendiente |
-| 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | RF-06, RNF-01 | ⬜ Pendiente |
-| 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | RF-09, RF-10 | ⬜ Pendiente |
-| — | Release final a `main` | `develop` → `main` | `v0.6.0` | DoD completo | 🔒 Bloqueado |
+| # | Fase | Rama | Versión | Tareas | Requisitos | Estado |
+| - | ---- | ---- | ------- | ------ | ---------- | ------ |
+| 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 0/7 | RNF-02, RF-01 (base) | ⬜ Pendiente |
+| 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 0/6 | RF-01, RF-02, RF-11, RNF-03 | ⬜ Pendiente |
+| 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 0/6 | RF-03, RF-04, RF-05 | ⬜ Pendiente |
+| 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 0/5 | RF-07, RF-08 | ⬜ Pendiente |
+| 5 | Interactividad visual (Drag and Drop) | `feat/fase-5-drag-and-drop` | `0.5.0` | 0/5 | RF-06, RNF-01 | ⬜ Pendiente |
+| 6 | Colaboración en línea y compartición de listas | `feat/fase-6-colaboracion` | `0.6.0` | 0/6 | RF-09, RF-10 | ⬜ Pendiente |
+| — | Release final a `main` | `develop` → `main` | `v0.6.0` | — | DoD completo | 🔒 Bloqueado |
 
 ---
 
@@ -53,6 +65,7 @@
 
 - **Rama:** `feat/fase-1-arquitectura` · **Versión:** `0.1.0`
 - **Objetivo:** definir el contrato de datos JSON y dejar el proyecto React 19 compilando con rutas en español.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/7
 
 **Tareas**
 - [ ] Inicializar proyecto con Vite + React 19 + TypeScript.
@@ -81,6 +94,7 @@ git checkout develop && git merge --no-ff feat/fase-1-arquitectura
 
 - **Rama:** `feat/fase-2-layout-ui` · **Versión:** `0.2.0`
 - **Objetivo:** construir el esqueleto visual y la navegación en español, más la integración de notificaciones.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
 
 **Tareas**
 - [ ] Layout responsive: barra lateral de listas, cabecera, área de contenido, pie de estado.
@@ -107,6 +121,7 @@ git checkout develop && git merge --no-ff feat/fase-2-layout-ui
 
 - **Rama:** `feat/fase-3-core-tareas` · **Versión:** `0.3.0`
 - **Objetivo:** ciclo de vida completo de la tarea sin pérdida de datos.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
 
 **Tareas**
 - [ ] Store de tareas (Zustand/Context) con operaciones CRUD y persistencia automática.
@@ -133,6 +148,7 @@ git checkout develop && git merge --no-ff feat/fase-3-core-tareas
 
 - **Rama:** `feat/fase-4-organizacion-busqueda` · **Versión:** `0.4.0`
 - **Objetivo:** clasificar y encontrar tareas al instante.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/5
 
 **Tareas**
 - [ ] Gestión de etiquetas con color y categorías personalizables (Personal, Trabajo, Estudio) (RF-07).
@@ -158,6 +174,7 @@ git checkout develop && git merge --no-ff feat/fase-4-organizacion-busqueda
 
 - **Rama:** `feat/fase-5-drag-and-drop` · **Versión:** `0.5.0`
 - **Objetivo:** reordenar tareas de forma manual e intuitiva, sin flechas.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/5
 
 **Tareas**
 - [ ] Integrar `@dnd-kit/core` + `@dnd-kit/sortable` con sensores de puntero y teclado.
@@ -183,6 +200,7 @@ git checkout develop && git merge --no-ff feat/fase-5-drag-and-drop
 
 - **Rama:** `feat/fase-6-colaboracion` · **Versión:** `0.6.0` (candidata final)
 - **Objetivo:** compartir listas con permisos de lectura/escritura simulando colaboración online.
+- **Estado:** ⬜ Pendiente · **Tareas:** 0/6
 
 **Tareas**
 - [ ] Modelo de compartición: enlace público/privado, token y permiso (`lectura` | `escritura`).
@@ -223,3 +241,13 @@ git push origin main --tags
 - [ ] Enlaces compartidos permiten ver y editar listas colaborativamente.
 
 > Prohibido crear `v1.0.0` o cualquier versión superior en este ciclo.
+
+---
+
+## 7. Registro de cierre de fases
+
+| Fase | Versión | Tag | Fecha | Commit de merge | Validación del usuario |
+| ---- | ------- | --- | ----- | --------------- | ---------------------- |
+| — | — | — | — | — | — |
+
+Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
