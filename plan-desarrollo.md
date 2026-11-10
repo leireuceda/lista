@@ -10,10 +10,10 @@
 | Repositorio | https://github.com/leireuceda/lista.git |
 | Rama de integración | `develop` |
 | Rama de producción | `main` (intacta hasta el release final) |
-| Fase activa | **1 — Arquitectura, modelado JSON y configuración base** |
-| Versión actual | `0.1.0` (pendiente de aplicar) |
-| Última fase validada | — |
-| Progreso global | 0 / 35 tareas · 0 / 6 fases |
+| Fase activa | **2 — Layout base, interfaz moderna y notificaciones** |
+| Versión actual | `0.2.0` (pendiente de aplicar) |
+| Última fase validada | Fase 1 — `v0.1.0` (2026-11-10) |
+| Progreso global | 7 / 35 tareas · 1 / 6 fases |
 
 ### Leyenda de seguimiento
 
@@ -49,7 +49,7 @@
 
 | # | Fase | Rama | Versión | Tareas | Requisitos | Estado |
 | - | ---- | ---- | ------- | ------ | ---------- | ------ |
-| 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 0/7 | RNF-02, RF-01 (base) | ⬜ Pendiente |
+| 1 | Arquitectura, modelado JSON y configuración base | `feat/fase-1-arquitectura` | `0.1.0` | 7/7 | RNF-02, RF-01 (base) | ✅ Completada |
 | 2 | Layout base, interfaz moderna y notificaciones | `feat/fase-2-layout-ui` | `0.2.0` | 0/6 | RF-01, RF-02, RF-11, RNF-03 | ⬜ Pendiente |
 | 3 | Núcleo de tareas, estados reversibles y papelera | `feat/fase-3-core-tareas` | `0.3.0` | 0/6 | RF-03, RF-04, RF-05 | ⬜ Pendiente |
 | 4 | Organización avanzada y buscador global | `feat/fase-4-organizacion-busqueda` | `0.4.0` | 0/5 | RF-07, RF-08 | ⬜ Pendiente |
@@ -65,16 +65,16 @@
 
 - **Rama:** `feat/fase-1-arquitectura` · **Versión:** `0.1.0`
 - **Objetivo:** definir el contrato de datos JSON y dejar el proyecto React 19 compilando con rutas en español.
-- **Estado:** ⬜ Pendiente · **Tareas:** 0/7
+- **Estado:** ✅ Completada · **Tareas:** 7/7
 
 **Tareas**
-- [ ] Inicializar proyecto con Vite + React 19 + TypeScript.
-- [ ] Configurar Tailwind CSS y estructura de carpetas (`src/features`, `src/components`, `src/lib`, `src/types`).
-- [ ] Definir tipos e interfaces del modelo JSON: `Tarea`, `Lista`, `Etiqueta`, `Categoria`, `Estado`, `Usuario`, `PermisoComparticion`.
-- [ ] Crear `src/data/schema.json` + datos semilla (`seed.json`) coherentes con los tipos.
-- [ ] Implementar capa de persistencia (`localStorage` + adaptador JSON) y exportación/importación `.json` (RNF-02).
-- [ ] Configurar React Router con rutas en español: `/listas/:lista`, `/papelera`, `/busqueda`, `/configuracion`, `/compartido/:id`.
-- [ ] Añadir `package.json` en `0.1.0`, ESLint/Prettier y scripts (`dev`, `build`, `lint`).
+- [x] Inicializar proyecto con Vite + React 19 + TypeScript.
+- [x] Configurar Tailwind CSS y estructura de carpetas (`src/features`, `src/components`, `src/lib`, `src/types`).
+- [x] Definir tipos e interfaces del modelo JSON: `Tarea`, `Lista`, `Etiqueta`, `Categoria`, `Estado`, `Usuario`, `PermisoComparticion`.
+- [x] Crear `src/data/esquema.json` + datos semilla (`semilla.json`) coherentes con los tipos.
+- [x] Implementar capa de persistencia (`localStorage` + adaptador JSON) y exportación/importación `.json` (RNF-02).
+- [x] Configurar React Router con rutas en español: `/listas/:lista`, `/papelera`, `/busqueda`, `/configuracion`, `/compartido/:id`.
+- [x] Añadir `package.json` en `0.1.0`, ESLint/Prettier y scripts (`dev`, `build`, `lint`).
 
 **Entregables:** esquema JSON documentado, seed de ejemplo, proyecto arrancando, rutas navegables (placeholders).
 **Criterios de aceptación:** `npm run build` sin errores; las 5 rutas responden; exportar e importar el seed restaura el estado idéntico; sin lógica de tareas todavía.
@@ -248,6 +248,6 @@ git push origin main --tags
 
 | Fase | Versión | Tag | Fecha | Commit de merge | Validación del usuario |
 | ---- | ------- | --- | ----- | --------------- | ---------------------- |
-| — | — | — | — | — | — |
+| 1 | `0.1.0` | `v0.1.0` | 2026-11-10 | `b29584f` | Modo auto (autorizado por el usuario) |
 
 Se añade una fila al validar cada fase en `develop`. La Fase 6 queda como release candidata hasta el "OK" final.
