@@ -1,45 +1,51 @@
-import { NavLink, Outlet } from 'react-router-dom'
-import { useAppStore } from '../../stores/appStore'
-
-const ENLACES = [
-  { a: '/listas/l-personal', texto: 'Personal' },
-  { a: '/listas/l-trabajo', texto: 'Trabajo' },
-  { a: '/busqueda', texto: 'Buscar' },
-  { a: '/papelera', texto: 'Papelera' },
-  { a: '/configuracion', texto: 'Configuración' },
-]
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { useTema } from '../../hooks/useTema'
+import BarraLateral from './BarraLateral'
+import Cabecera from './Cabecera'
 
 export default function Layout() {
-  const listas = useAppStore((estado) => estado.datos.listas)
+  useTema()
+  const [menuAbierto, setMenuAbierto] = useState(false)
 
   return (
-    <div className="flex min-h-screen">
-      <aside className="hidden w-60 shrink-0 border-r border-slate-200 bg-white p-4 md:block dark:border-slate-800 dark:bg-slate-900">
-        <p className="mb-6 text-lg font-semibold tracking-tight">TaskFlow Pro</p>
-        <nav className="flex flex-col gap-1">
-          {listas.map((lista) => (
-            <NavLink
-              key={lista.id}
-              to={`/listas/${lista.id}`}
-              className="rounded-lg px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              {lista.nombre}
-            </NavLink>
-          ))}
-          {ENLACES.slice(2).map((enlace) => (
-            <NavLink
-              key={enlace.a}
-              to={enlace.a}
-              className="rounded-lg px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              {enlace.texto}
-            </NavLink>
-          ))}
-        </nav>
+    <div className="min-h-screen md:flex">
+      <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white md:block dark:border-slate-800 dark:bg-slate-900">
+        <div className="sticky top-0 h-screen">
+          <BarraLateral />
+        </div>
       </aside>
-      <main className="flex-1 p-6">
-        <Outlet />
-      </main>
+
+      {menuAbierto && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div
+            className="absolute inset-0 bg-slate-950/50"
+            onClick={() => setMenuAbierto(false)}
+            aria-hidden="true"
+          />
+          <aside className="relative h-full w-72 border-r border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-900">
+            <BarraLateral alNavegar={() => setMenuAbierto(false)} />
+            <button
+              type="button"
+              onClick={() => setMenuAbierto(false)}
+              aria-label="Cerrar menú"
+              className="absolute right-2 top-2 rounded-lg p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              ✕
+            </button>
+          </aside>
+        </div>
+      )}
+
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Cabecera alAbrirMenu={() => setMenuAbierto(true)} />
+        <main className="flex-1 p-4 md:p-6">
+          <Outlet />
+        </main>
+        <footer className="border-t border-slate-200 px-4 py-3 text-xs text-slate-400 dark:border-slate-800">
+          TaskFlow Pro · v{__APP_VERSION__} · datos locales en JSON
+        </footer>
+      </div>
     </div>
   )
 }
