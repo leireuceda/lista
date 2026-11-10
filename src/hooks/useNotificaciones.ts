@@ -27,7 +27,9 @@ export function useNotificaciones() {
   }, [])
 
   const programar = useCallback((fechaISO: string, titulo: string, cuerpo: string) => {
-    temporizadores.current.push(programarNotificacion(fechaISO, titulo, cuerpo))
+    const cancelar = programarNotificacion(fechaISO, titulo, cuerpo)
+    temporizadores.current.push(cancelar)
+    return cancelar
   }, [])
 
   return {
