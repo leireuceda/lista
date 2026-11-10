@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DatosApp TaskFlow Pro",
+  "type": "object",
+  "required": [
+    "version",
+    "usuario",
+    "preferencias",
+    "listas",
+    "tareas",
+    "etiquetas",
+    "categorias",
+    "comparticiones"
+  ],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "usuario": {
+      "type": "object",
+      "required": ["id", "nombre", "email"],
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "email": { "type": "string" }
+      }
+    },
+    "preferencias": {
+      "type": "object",
+      "required": ["tema", "notificaciones"],
+      "properties": {
+        "tema": { "enum": ["claro", "oscuro", "sistema"] },
+        "notificaciones": { "type": "boolean" }
+      }
+    },
+    "listas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "descripcion", "propietarioId", "creadaEn", "actualizadaEn"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "descripcion": { "type": "string" },
+          "propietarioId": { "type": "string" },
+          "creadaEn": { "type": "string", "format": "date-time" },
+          "actualizadaEn": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "tareas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "listaId",
+          "titulo",
+          "descripcion",
+          "vencimiento",
+          "categoriaId",
+          "etiquetaIds",
+          "prioridad",
+          "estado",
+          "historial",
+          "orden",
+          "creadaEn",
+          "actualizadaEn",
+          "eliminadaEn"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "listaId": { "type": "string" },
+          "titulo": { "type": "string" },
+          "descripcion": { "type": "string" },
+          "vencimiento": { "type": ["string", "null"], "format": "date-time" },
+          "categoriaId": { "type": ["string", "null"] },
+          "etiquetaIds": { "type": "array", "items": { "type": "string" } },
+          "prioridad": { "enum": ["baja", "media", "alta", "urgente"] },
+          "estado": { "enum": ["pendiente", "en-progreso", "completada"] },
+          "historial": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["estado", "fecha"],
+              "properties": {
+                "estado": { "enum": ["pendiente", "en-progreso", "completada"] },
+                "fecha": { "type": "string", "format": "date-time" }
+              }
+            }
+          },
+          "orden": { "type": "number" },
+          "creadaEn": { "type": "string", "format": "date-time" },
+          "actualizadaEn": { "type": "string", "format": "date-time" },
+          "eliminadaEn": { "type": ["string", "null"], "format": "date-time" }
+        }
+      }
+    },
+    "etiquetas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "color"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "color": { "type": "string" }
+        }
+      }
+    },
+    "categorias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "color"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "color": { "type": "string" }
+        }
+      }
+    },
+    "comparticiones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "listaId", "token", "permiso", "creadaEn", "revocadaEn", "ultimoAcceso"],
+        "properties": {
+          "id": { "type": "string" },
+          "listaId": { "type": "string" },
+          "token": { "type": "string" },
+          "permiso": { "enum": ["lectura", "escritura"] },
+          "creadaEn": { "type": "string", "format": "date-time" },
+          "revocadaEn": { "type": ["string", "null"], "format": "date-time" },
+          "ultimoAcceso": { "type": ["string", "null"], "format": "date-time" }
+        }
+      }
+    }
+  }
+}
