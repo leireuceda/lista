@@ -3,6 +3,15 @@ import type { DatosApp } from '../types/modelo'
 import { validarDatos } from './validacion'
 
 export const CLAVE_ALMACENAMIENTO = 'taskflow-pro:datos:v1'
+export const CANAL_SINCRONIZACION = 'taskflow-pro-sync'
+
+let canal: BroadcastChannel | null = null
+
+function canalSincronizacion(): BroadcastChannel | null {
+  if (typeof BroadcastChannel === 'undefined') return null
+  canal ??= new BroadcastChannel(CANAL_SINCRONIZACION)
+  return canal
+}
 
 export function datosIniciales(): DatosApp {
   return structuredClone(semilla) as unknown as DatosApp
@@ -20,6 +29,7 @@ export function cargarDatos(): DatosApp {
 
 export function guardarDatos(datos: DatosApp): void {
   localStorage.setItem(CLAVE_ALMACENAMIENTO, JSON.stringify(datos))
+  canalSincronizacion()?.postMessage('datos-actualizados')
 }
 
 export function reiniciarDatos(): DatosApp {
