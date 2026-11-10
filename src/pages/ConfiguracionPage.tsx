@@ -1,4 +1,5 @@
 import Boton from '../components/ui/Boton'
+import ExportarImportar from '../features/configuracion/ExportarImportar'
 import GestorCategorias from '../features/organizacion/GestorCategorias'
 import GestorEtiquetas from '../features/organizacion/GestorEtiquetas'
 import { useNotificaciones } from '../hooks/useNotificaciones'
@@ -92,13 +93,7 @@ export default function ConfiguracionPage() {
         <GestorCategorias />
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900">
-        <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Datos</h3>
-        <p className="mt-1">
-          La aplicación guarda todo en JSON dentro de este navegador. La exportación e importación
-          estarán disponibles en la fase de colaboración.
-        </p>
-      </div>
+      <ExportarImportar />
     </section>
   )
 }

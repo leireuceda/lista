@@ -6,6 +6,7 @@ interface EstadoApp {
   datos: DatosApp
   reemplazar: (datos: DatosApp) => void
   actualizar: (cambio: (datos: DatosApp) => DatosApp) => void
+  establecer: (datos: DatosApp) => void
   recargar: () => void
 }
 
@@ -21,6 +22,7 @@ export const useAppStore = create<EstadoApp>((set) => ({
       guardarDatos(datos)
       return { datos }
     }),
+  establecer: (datos) => set({ datos }),
   recargar: () => set({ datos: cargarDatos() }),
 }))
 

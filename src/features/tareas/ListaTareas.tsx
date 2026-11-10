@@ -29,9 +29,10 @@ import ZonaMoverLista from './ZonaMoverLista'
 
 interface Props {
   listaId: string
+  compartida?: boolean
 }
 
-export default function ListaTareas({ listaId }: Props) {
+export default function ListaTareas({ listaId, compartida = false }: Props) {
   const tareas = useAppStore((estado) => estado.datos.tareas)
   const { mostrar } = useToast()
   const [formularioAbierto, setFormularioAbierto] = useState(false)
@@ -159,8 +160,7 @@ export default function ListaTareas({ listaId }: Props) {
               >
                 {tarjetas}
               </SortableContext>
-              <ZonaMoverLista listaActualId={listaId} />
-            </DndContext>
+              {!compartida && <ZonaMoverLista listaActualId={listaId} />}            </DndContext>
           )}
           {arrastrando && <span className="sr-only">Arrastrando tarea</span>}
         </>
