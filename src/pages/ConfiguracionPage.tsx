@@ -1,4 +1,6 @@
 import Boton from '../components/ui/Boton'
+import GestorCategorias from '../features/organizacion/GestorCategorias'
+import GestorEtiquetas from '../features/organizacion/GestorEtiquetas'
 import { useNotificaciones } from '../hooks/useNotificaciones'
 import { useTema } from '../hooks/useTema'
 import { useAppStore } from '../stores/appStore'
@@ -83,6 +85,11 @@ export default function ConfiguracionPage() {
             Enviar prueba
           </Boton>
         </div>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <GestorEtiquetas />
+        <GestorCategorias />
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900">

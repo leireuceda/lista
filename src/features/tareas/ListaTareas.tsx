@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import Boton from '../../components/ui/Boton'
+import { FILTROS_VACIOS, filtrarTareas } from '../../lib/filtros'
 import { useAppStore } from '../../stores/appStore'
 import type { Tarea } from '../../types/modelo'
+import FiltrosTareas from './FiltrosTareas'
 import FormularioTarea from './FormularioTarea'
 import TarjetaTarea from './TarjetaTarea'
 
@@ -13,17 +15,18 @@ export default function ListaTareas({ listaId }: Props) {
   const tareas = useAppStore((estado) => estado.datos.tareas)
   const [formularioAbierto, setFormularioAbierto] = useState(false)
   const [editando, setEditando] = useState<Tarea | null>(null)
+  const [filtros, setFiltros] = useState(FILTROS_VACIOS)
 
   const visibles = useMemo(
     () =>
-      tareas
-        .filter((tarea) => tarea.listaId === listaId && tarea.eliminadaEn === null)
+      filtrarTareas(tareas, filtros)
+        .filter((tarea) => tarea.listaId === listaId)
         .sort((a, b) => {
           if (a.estado === 'completada' && b.estado !== 'completada') return 1
           if (b.estado === 'completada' && a.estado !== 'completada') return -1
           return a.orden - b.orden
         }),
-    [tareas, listaId],
+    [tareas, listaId, filtros],
   )
 
   const pendientes = visibles.filter((tarea) => tarea.estado !== 'completada').length
@@ -48,6 +51,10 @@ export default function ListaTareas({ listaId }: Props) {
           </p>
         </div>
         <Boton onClick={abrirNueva}>+ Nueva tarea</Boton>
+      </div>
+
+      <div className="mb-4">
+        <FiltrosTareas filtros={filtros} onCambiar={setFiltros} />
       </div>
 
       {visibles.length === 0 ? (
