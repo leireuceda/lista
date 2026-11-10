@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import { useRecordatorios } from '../../hooks/useRecordatorios'
 import { useTema } from '../../hooks/useTema'
 import BarraLateral from './BarraLateral'
 import Cabecera from './Cabecera'
 
 export default function Layout() {
   useTema()
+  useRecordatorios()
   const [menuAbierto, setMenuAbierto] = useState(false)
 
   return (
