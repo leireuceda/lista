@@ -18,6 +18,8 @@ Guiar el desarrollo de **TaskFlow Pro** paso a paso, aplicando estrictamente:
 Fuentes del proyecto (leerlas antes de planificar o escribir código):
 
 - `documento_prd_aplicaciondetareas.md` — PRD, alcance, stack y requerimientos (RF-01 a RF-10).
+- `plan-desarrollo.md` — plan por fases, tareas y estado de avance (fuente de verdad del progreso).
+- `AGENTS.md` — convenciones de código y reglas de trabajo del repositorio.
 - `claude_skill.md` — reglas originales de planificación (referencia histórica; este skill es la versión operativa).
 
 ---
@@ -133,6 +135,7 @@ No crear `v1.0.0` ni etiquetas superiores.
 - ❌ Merge directo de ramas de fase a `main`.
 - ❌ Versiones `>= 1.0.0` o tags fuera de `v0.y.z`.
 - ❌ Desarrollar varias fases en una sola interacción.
+- ❌ Archivos de código con más de **200 líneas** (dividir en componentes, hooks o utilidades).
 - ❌ Eliminar, reescribir o reetiquetar historia ya integrada en `develop`.
 - ✅ Una fase = una rama = una versión menor.
 - ✅ Resumen + confirmación del usuario al cerrar cada fase.
